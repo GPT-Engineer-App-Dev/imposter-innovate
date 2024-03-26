@@ -11,13 +11,16 @@ const { argv } = require('yargs');
 const _COMMIT_HASH = process.env.COMMIT_HASH || 'unknown';
 console.info('Commit hash:', _COMMIT_HASH);
 
+//const PRODUCTION = process.env.NODE_ENV === 'production';
+const PRODUCTION = false;
+
 module.exports = {
   pages: {
     index: {
       entry: './src/main.js',
       template: './src/index.html',
       templateParameters: {
-        cspDefaultSrc: process.env.NODE_ENV === 'production' ? '' : '*:5600 *:5666 ws://*:27180',
+        cspDefaultSrc: PRODUCTION ? '' : '*:5600 *:5666 ws://*:27180',
       },
     },
   },
@@ -44,8 +47,8 @@ module.exports = {
     plugins: [
       new webpack.IgnorePlugin({ resourceRegExp: /^\.\/locale$/, contextRegExp: /moment$/ }),
       new webpack.DefinePlugin({
-        PRODUCTION: process.env.NODE_ENV === 'production',
-        AW_SERVER_URL: process.env.AW_SERVER_URL,
+        PRODUCTION,
+        AW_SERVER_URL: process.env.AW_SERVER_URL || "'http://localhost:5600'",
         COMMIT_HASH: JSON.stringify(_COMMIT_HASH),
       }),
       new CopyWebpackPlugin([{ from: 'static/', to: 'static' }]),
