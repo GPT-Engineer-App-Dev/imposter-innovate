@@ -4,10 +4,11 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { argv } = require('yargs');
 
 // get git info from command line
-const _COMMIT_HASH = require('child_process')
-  .execSync('git rev-parse --short HEAD')
-  .toString()
-  .trim();
+//const _COMMIT_HASH = require('child_process')
+//  .execSync('git rev-parse --short HEAD')
+//  .toString()
+//  .trim();
+const _COMMIT_HASH = process.env.COMMIT_HASH || 'unknown';
 console.info('Commit hash:', _COMMIT_HASH);
 
 module.exports = {
