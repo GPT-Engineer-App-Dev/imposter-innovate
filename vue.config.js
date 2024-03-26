@@ -52,6 +52,7 @@ module.exports = {
         COMMIT_HASH: JSON.stringify(_COMMIT_HASH),
       }),
       new CopyWebpackPlugin([{ from: 'static/', to: 'static' }]),
+      new CopyWebpackPlugin([{ from: 'media/logo/', to: 'static' }]),
     ],
   },
   devServer: {
