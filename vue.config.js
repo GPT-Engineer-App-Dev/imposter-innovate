@@ -20,7 +20,7 @@ module.exports = {
       entry: './src/main.js',
       template: './src/index.html',
       templateParameters: {
-        cspDefaultSrc: PRODUCTION ? '' : '*:5600 *:5666 ws://*:27180',
+        cspDefaultSrc: PRODUCTION ? '' : 'http://*:5600 *:5600 *:5666 ws://*:27180',
       },
     },
   },
