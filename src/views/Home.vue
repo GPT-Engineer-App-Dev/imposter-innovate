@@ -67,10 +67,13 @@ div
       i
         | You can change which page opens when you open ActivityWatch (instead of this page) in the #[router-link(to="/settings") settings].
 
+  p.mt-4
+    | Built with GPT Engineer
+
 </template>
 
 <script>
 export default {
-  name: 'Home',
+  name: "Home",
 };
 </script>
